@@ -103,15 +103,17 @@ public class pro {
                 break;
             if (xWins >= 2 || (xWins>oWins && roundCount > 3)) {
                 System.out.println();
-                System.out.println("----- O WON "+ xWins+" ROUND OUT OF 3 -----");
                 System.out.println("GAME OVER");
+                System.out.println("----- X WON "+ xWins+" ROUND OUT OF 3 -----");
+                System.out.println("----- O WON "+ oWins+" ROUND OUT OF 3 -----");
                 System.out.println();
                 break;
             }
             if (oWins >= 2 || (oWins>xWins && roundCount > 3)) {
                 System.out.println();
-                System.out.println("----- O WON "+ oWins+" ROUND OUT OF 3 -----");
                 System.out.println("GAME OVER");
+                System.out.println("----- X WON "+ xWins+" ROUND OUT OF 3 -----");
+                System.out.println("----- O WON "+ oWins+" ROUND OUT OF 3 -----");
                 System.out.println();
                 break;
             }
