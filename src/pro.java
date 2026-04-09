@@ -33,14 +33,15 @@ public class pro {
         int roundCount = 1;
 
         while (true) {
-
+            System.out.println();
             System.out.println("---------------Round " + roundCount + " Start---------------");
             System.out.println();
             printBoard(board);
 
             while (true) {
                 String Playertype = "human";
-                System.out.println(playerMark+" Where you want to play");
+                System.out.println();
+                System.out.println(playerMark+" Where do you want to play");
                 int pos=0;
                 int position=0;
                 try {
@@ -80,8 +81,8 @@ public class pro {
                 playerMark=playerMark=='X'?'O':'X';
                 System.out.println("\n"+playerMark+" Turn");
                 Random random = new Random();
-                position = random.nextInt(1, 10);
-//                position = scanner.nextInt();
+//                position = random.nextInt(1, 10);
+                position = scanner.nextInt();
                 Playertype = "Computer";
                 pos = playedMove(board, position, playerMark, scanner, Playertype, playerMoves);
                 System.out.println("Player "+playerMark+" played in position :" + pos);
@@ -115,6 +116,7 @@ public class pro {
             if (xWins >= 2 || (xWins>oWins && roundCount > 3)) {
                 System.out.println();
                 System.out.println("GAME OVER");
+                System.out.println("THE WINNER IS X PLAYER");
                 System.out.println("----- X WON "+ xWins+" ROUND OUT OF 3 -----");
                 System.out.println("----- O WON "+ oWins+" ROUND OUT OF 3 -----");
                 System.out.println();
@@ -123,6 +125,7 @@ public class pro {
             if (oWins >= 2 || (oWins>xWins && roundCount > 3)) {
                 System.out.println();
                 System.out.println("GAME OVER");
+                System.out.println("THE WINNER IS O PLAYER");
                 System.out.println("----- X WON "+ xWins+" ROUND OUT OF 3 -----");
                 System.out.println("----- O WON "+ oWins+" ROUND OUT OF 3 -----");
                 System.out.println();
@@ -141,7 +144,7 @@ public class pro {
             }
             startAgain(board, playerMoves);
         }
-        System.out.println("THE LAST BOARD");
+        System.out.println("THE FINAL BOARD");
         printBoard(board);
 
     }
