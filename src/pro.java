@@ -13,10 +13,23 @@ public class pro {
         };
         int xWins = 0;
         int oWins = 0;
-        System.out.println("Do you wnat to play three round or one ? [1/3]");
-        int rounds = scanner.nextInt();
-        System.out.println("What role you want to play \'X\' or \'O\'?");
-        char playerMark =Character.toUpperCase(scanner.next().charAt(0));
+        char playerMark=' ';
+        int rounds=0;
+        try {
+            System.out.println("Do you wnat to play three round or one ? [1/3]");
+             rounds = scanner.nextInt();
+            System.out.println("What role you want to play \'X\' or \'O\'?");
+            playerMark = Character.toUpperCase(scanner.next().charAt(0));
+            if(playerMark!='X' && playerMark!='O' ) {
+                throw new Exception("Please enter X OR O");
+            }
+        }catch (InputMismatchException e){
+            System.out.println("Please enter 1 OR 3");
+            System.exit(0);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
         int roundCount = 1;
 
         while (true) {
@@ -28,12 +41,22 @@ public class pro {
             while (true) {
                 String Playertype = "human";
                 System.out.println(playerMark+" Where you want to play");
-                int position = scanner.nextInt();
-                //for making move
-                int pos = playedMove(board, position, playerMark, scanner, Playertype, playerMoves);
+                int pos=0;
+                int position=0;
+                try {
+                    position = scanner.nextInt();
+                    if(position >9||position<1)
+                        throw new Exception("Enter from number 1 to 9");
+                    //for making move
+                     pos = playedMove(board, position, playerMark, scanner, Playertype, playerMoves);
+                }catch (InputMismatchException e){
+                    System.out.println("Please enter a number");
+                    System.exit(0);
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
 
                 System.out.println("Player "+playerMark+" played in position :" + pos);
-                System.out.println();
                 if (winnerCheck(board, playerMark)) {
                     roundCount++;
                     if(playerMark=='X')
@@ -54,16 +77,15 @@ public class pro {
                     System.out.println();
                     break;
                 }
-
                 playerMark=playerMark=='X'?'O':'X';
-                System.out.println(playerMark+" Turn");
+                System.out.println("\n"+playerMark+" Turn");
                 Random random = new Random();
                 position = random.nextInt(1, 10);
 //                position = scanner.nextInt();
                 Playertype = "Computer";
                 pos = playedMove(board, position, playerMark, scanner, Playertype, playerMoves);
                 System.out.println("Player "+playerMark+" played in position :" + pos);
-                System.out.println();
+
                 if (winnerCheck(board, playerMark)) {
                     roundCount++;
                     if(playerMark=='X')
@@ -169,7 +191,6 @@ public class pro {
             }else {
                 Random random = new Random();
                 position = random.nextInt(1, 10);
-                System.out.println(position);
             }
         }
 
