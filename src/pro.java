@@ -81,8 +81,8 @@ public class pro {
                 playerMark=playerMark=='X'?'O':'X';
                 System.out.println("\n"+playerMark+" Turn");
                 Random random = new Random();
-//                position = random.nextInt(1, 10);
-                position = scanner.nextInt();
+                position = random.nextInt(1, 10);
+//                position = scanner.nextInt();
                 Playertype = "Computer";
                 pos = playedMove(board, position, playerMark, scanner, Playertype, playerMoves);
                 System.out.println("Player "+playerMark+" played in position :" + pos);
